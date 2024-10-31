@@ -1,0 +1,191 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<div class="container">
+  <nav>
+    <ul>
+      <li><i class="fa fa-shoe-prints"></i></li>
+    </ul>
+    <ul>
+      <li><i class="fa fa-home"></i></li>
+      <li><i class="fa fa-cart-shopping"></i></li>
+      <li><i class="fa fa-filter" aria-hidden="true"></i></li>
+    </ul>
+    <ul>
+      <li><i class="fa-solid fa-magnifying-glass"></i></li>
+      <li><i class="fa-solid fa-align-left"></i></li>
+    </ul>
+  </nav>
+
+  <!-- catagory list -->
+  <ul class="catagory-list">
+    <li>All</li>
+    <li>Footwear</li>
+    <li>Clothing</li>
+  </ul>
+
+  <button id="backbtn"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+
+  <div class="cards">
+    <div onclick="ProductDetails(this.id,'#ff9c8b')" id="product1" class="card">
+      <img src="/images/shoes1.png" alt="" />
+      <div class="text-con">
+        <h2>Nike Air Zoom Pegasus 36</h2>
+        <p>$120.00</p>
+        <button class="add-cart"><i class="fa fa-cart-plus"></i> add to cart</button>
+      </div>
+
+      <div class="list-items">
+        <div class="list">
+          <img src="/images/shoes1.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes1.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes1.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+      </div>
+    </div>
+
+    <div onclick="ProductDetails(this.id,'#86b6ff')" id="product2" class="card">
+      <img src="/images/shoes4.png" alt="" />
+      <div class="text-con">
+        <h2>Nike Air Zoom Pegasus 36</h2>
+        <p>$120.00</p>
+      </div>
+      <button class="add-cart"><i class="fa fa-cart-plus"></i> add to cart</button>
+      <div class="list-items">
+        <div class="list">
+          <img src="/images/shoes4.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes4.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes4.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+      </div>
+    </div>
+
+    <div onclick="ProductDetails(this.id,'#dbdbdb')" id="product3" class="card">
+      <img src="/images/shoes2.png" alt="" />
+      <div class="text-con">
+        <h2>Nike Air Zoom Pegasus 36</h2>
+        <p>$120.00</p>
+      </div>
+      <button class="add-cart"><i class="fa fa-cart-plus"></i> add to cart</button>
+      <div class="list-items">
+        <div class="list">
+          <img src="/images/shoes2.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes2.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+        <div class="list">
+          <img src="/images/shoes2.png" alt="" />
+          <h3>Nike Air Zoom Pegasus 36</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var Cards = document.querySelectorAll(".card");
+  var Container = document.querySelector(".container");
+  var catagoryList = document.querySelector(".catagory-list");
+  var textCon = document.querySelector(".text-con");
+  var backbtn = document.querySelector("#backbtn");
+  //select image from productcontainer
+
+  function ProductDetails(ProductId, color) {
+    let productContainer = document.getElementById(`${ProductId}`);
+    let ProductImage = productContainer.querySelector("img");
+    let ProductButton = productContainer.querySelector("button");
+    let ProductlistItems = productContainer.querySelector(".list-items");
+    Cards.forEach(card => {
+      card.style.flex = "0";
+      card.style.scale = ".3";
+      card.style.overflow = "hidden";
+    });
+
+    Container.style.background = `${color}`;
+    productContainer.style.background = `${color}`;
+    productContainer.style.scale = 1;
+    productContainer.style.alignItems = "center";
+    productContainer.style.display = "flex";
+    productContainer.style.flex = "1";
+    productContainer.style.boxShadow = "0 0 100px transparent";
+    productContainer.style.height = "700px";
+    productContainer.style.overflow = "hidden  auto";
+    catagoryList.style.opacity = "0";
+    textCon.style.flexDirection = "row";
+    backbtn.style.scale = "1";
+
+    ProductImage.style.width = "100%";
+    ProductImage.style.width = "500px";
+    ProductImage.style.filter = "saturate(1) blur(0) drop-shadow(-5px 10px 10px)";
+    ProductButton.style.display = "block";
+    ProductlistItems.style.display = "flex";
+  }
+
+  backbtn.addEventListener("click", () => {
+    let productContainer1 = document.getElementById("product1");
+    let productContainer2 = document.getElementById("product2");
+    let productContainer3 = document.getElementById("product3");
+    let ProCounter = Array(productContainer1, productContainer2, productContainer3);
+
+    var ProductlistItemsL = document.querySelectorAll(".list-items");
+    var ProductAddCarts = document.querySelectorAll(".add-cart");
+
+    ProductlistItemsL.forEach(ProductlistItems => {
+      ProductlistItems.style.display = "none";
+    });
+
+    Cards.forEach(card => {
+      card.style.flex = "1";
+      card.style.scale = "1";
+      card.style.overflow = "none";
+    });
+    ProductAddCarts.forEach(ProductAddCart => {
+      ProductAddCart.style.display = "none";
+    });
+    //foreach ProCounter
+    ProCounter.forEach(ProCounter => {
+      ProCounter.style.background = "";
+      ProCounter.style.scale = "1";
+      ProCounter.style.display = "flex";
+      ProCounter.style.flexDirection = "column";
+      ProCounter.style.flex = "1 200px";
+      ProCounter.style.boxShadow = "0px 0px 10px #0000001a";
+      ProCounter.style.overflow = "visible";
+      ProCounter.style.height = "350px";
+      ProCounter.querySelector("img").style.width = "100%";
+    });
+
+    catagoryList.style.opacity = "1";
+    textCon.style.flexDirection = "row";
+    backbtn.style.scale = "0";
+    Container.style.background = "#fff";
+    catagoryList.style.opacity = "1";
+    textCon.style.flexDirection = "row";
+    backbtn.style.scale = "0";
+  });
+</script>
